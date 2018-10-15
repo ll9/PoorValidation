@@ -39,21 +39,25 @@ namespace ColumnNoDuplicates
         {
             if (e.RowIndex == columnModelDataGridView.Rows.Count - 1) return;
 
-            string name = e.FormattedValue.ToString();
+            if (e.ColumnIndex == 0)
+            {
+                string name = e.FormattedValue.ToString();
 
-            if (string.IsNullOrEmpty(name))
-            {
-                columnModelDataGridView[0, e.RowIndex].ErrorText = "Name darf nicht leer sein";
+                if (string.IsNullOrEmpty(name))
+                {
+                    columnModelDataGridView[0, e.RowIndex].ErrorText = "Name darf nicht leer sein";
+                }
+                else if (name.Contains("[") || name.Contains("]"))
+                {
+                    columnModelDataGridView[0, e.RowIndex].ErrorText = "Ungülitges Zeichen";
+
+                }
+                else if (columnModelDataGridView.Rows.Cast<DataGridViewRow>().Select(row => row.Cells[0].Value.ToString()).Where(val => val == name).Count() > 1)
+                {
+                    columnModelDataGridView[0, e.RowIndex].ErrorText = "Doppelte Spaltennamen!";
+                }
+                else columnModelDataGridView[0, e.RowIndex].ErrorText = "";
             }
-            else if (name.Contains("[") || name.Contains("]"))
-            {
-                columnModelDataGridView[0, e.RowIndex].ErrorText = "Ungülitges Zeichen";
-            }
-            else if (Columns.Select(col => col.Name.ToLower()).Contains(name.ToLower()))
-            {
-                columnModelDataGridView[0, e.RowIndex].ErrorText = "Doppelte Spaltennamen!";
-            }
-            else columnModelDataGridView[0, e.RowIndex].ErrorText = "";
         }
 
         private void OkButton_Click(object sender, EventArgs e)
