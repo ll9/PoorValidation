@@ -33,10 +33,10 @@
             this.NameLabel = new System.Windows.Forms.Label();
             this.NameBox = new System.Windows.Forms.TextBox();
             this.ErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.OkButton = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.columnModelDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.columnModelBindingSource)).BeginInit();
@@ -54,6 +54,7 @@
             this.columnModelDataGridView.Name = "columnModelDataGridView";
             this.columnModelDataGridView.Size = new System.Drawing.Size(300, 220);
             this.columnModelDataGridView.TabIndex = 1;
+            this.columnModelDataGridView.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.columnModelDataGridView_RowValidating);
             // 
             // NameLabel
             // 
@@ -76,6 +77,16 @@
             // 
             this.ErrorProvider.ContainerControl = this;
             // 
+            // OkButton
+            // 
+            this.OkButton.Location = new System.Drawing.Point(269, 334);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(75, 23);
+            this.OkButton.TabIndex = 4;
+            this.OkButton.Text = "Ok";
+            this.OkButton.UseVisualStyleBackColor = true;
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
@@ -92,21 +103,12 @@
             // 
             this.columnModelBindingSource.DataSource = typeof(ColumnNoDuplicates.Models.ColumnModel);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(269, 334);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 380);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.OkButton);
             this.Controls.Add(this.NameBox);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.columnModelDataGridView);
@@ -129,7 +131,7 @@
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.TextBox NameBox;
         private System.Windows.Forms.ErrorProvider ErrorProvider;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button OkButton;
     }
 }
 
