@@ -53,8 +53,8 @@
             this.columnModelDataGridView.Location = new System.Drawing.Point(44, 86);
             this.columnModelDataGridView.Name = "columnModelDataGridView";
             this.columnModelDataGridView.Size = new System.Drawing.Size(300, 220);
-            this.columnModelDataGridView.TabIndex = 1;
-            this.columnModelDataGridView.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.columnModelDataGridView_RowValidating);
+            this.columnModelDataGridView.TabIndex = 4;
+            this.columnModelDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.columnModelDataGridView_CellValidating);
             // 
             // NameLabel
             // 
@@ -82,7 +82,7 @@
             this.OkButton.Location = new System.Drawing.Point(269, 334);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
-            this.OkButton.TabIndex = 4;
+            this.OkButton.TabIndex = 5;
             this.OkButton.Text = "Ok";
             this.OkButton.UseVisualStyleBackColor = true;
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
